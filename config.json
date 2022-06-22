@@ -7,11 +7,32 @@
       "files": [
         {
           "format": "scss/variables",
-          "destination": "global/_variables.scss"
+          "destination": "global/_variables.scss",
+          "filter": {
+            "attributes": {
+              "category": "color"
+            }
+          }
         },
         {
           "format": "scss/variables",
-          "destination": "component/_sizes.scss"
+          "destination": "global/_fontSizes.scss",
+          "filter": {
+            "attributes": {
+              "category": "size",
+              "type": "font"
+            }
+          }
+        },
+        {
+          "format": "scss/variables",
+          "destination": "assets/_icons.scss",
+          "filter": {
+            "attributes": {
+              "category": "content",
+              "type": "icon"
+            }
+          }
         }
       ]
     }
