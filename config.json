@@ -7,7 +7,7 @@
       "files": [
         {
           "format": "scss/variables",
-          "destination": "global/_variables.scss",
+          "destination": "global/_color.scss",
           "filter": {
             "attributes": {
               "category": "color"
@@ -16,21 +16,28 @@
         },
         {
           "format": "scss/variables",
-          "destination": "global/_fontSizes.scss",
+          "destination": "global/_grid.scss",
           "filter": {
             "attributes": {
-              "category": "size",
-              "type": "font"
+              "category": "grid"
             }
           }
         },
         {
           "format": "scss/variables",
-          "destination": "assets/_icons.scss",
+          "destination": "assets/_font.scss",
           "filter": {
             "attributes": {
-              "category": "content",
-              "type": "icon"
+              "category": "font"
+            }
+          }
+        },
+        {
+          "format": "scss/variables",
+          "destination": "assets/_effect.scss",
+          "filter": {
+            "attributes": {
+              "category": "effect"
             }
           }
         }
