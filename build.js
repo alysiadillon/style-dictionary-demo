@@ -18,15 +18,41 @@ StyleDictionary.registerTransform({
       return token.attributes.category === 'grid'
     },
     transformer: token => {
-      console.log('custom transform for token: ', token)
       return Object.values(token.value).join(' grid ');
+    }
+  })
+
+  StyleDictionary.registerTransform({
+    name: 'effect/shadow',
+    type: 'value',
+    matcher: token => {
+      return token.type === 'custom-shadow'
+    },
+    transformer: token => {
+      return `${token.value.offsetX}px ${token.value.offsetY}px ${token.value.radius}px ${token.value.color}`;
+    }
+  })
+  StyleDictionary.registerTransform({
+    name: 'font',
+    type: 'value',
+    matcher: function (token) {
+      return token.type === 'custom-fontStyle'
+    },
+    transformer: function ({ value: font }, { options }) {
+      // font: font-style font-variant font-weight font-size/line-height font-family;
+      const notDefault = (value, defaultValue) => (value !== defaultValue) ? value : ''
+      const fontFamily = ({ fontFamily }, { fontFamilies } = {}) => fontFamilies && fontFamilies[fontFamily] ? fontFamilies[fontFamily] : fontFamily
+
+      return `${notDefault(font.fontStretch, 'normal')} ${notDefault(font.fontStyle, 'normal')} ${font.fontWeight} ${font.fontSize}/${font.lineHeight} ${fontFamily(font, options)}`.trim()
     }
   })
 
   StyleDictionary.registerTransformGroup({
     name: 'custom/scss',
     transforms: StyleDictionary.transformGroup['less'].concat([
-      'size/grid'
+      'size/grid',
+      'effect/shadow',
+      'font'
     ])
   })
   
